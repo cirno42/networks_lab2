@@ -7,15 +7,19 @@ To run client use:
 
 Where args can be: 
 > -f <filename>
+
 Name of sending file; Required argument.
 
 > -p <port>
+
 Port of the server; Optional argument.
 
 > -a <address>
+
 Address of the server; Optional argument.
   
 > -h
+
 Prints help.
 
 # Server  
@@ -27,7 +31,9 @@ To run server use:
 Where args can be: 
   
 > -p <port>
+
 Port of the server; Optional argument.
   
 > -h
+
 Prints help.
