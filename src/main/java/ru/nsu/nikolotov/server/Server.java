@@ -24,7 +24,7 @@ public class Server {
         }
 
         if ((port <= 0) || (port >= 65536)) {
-            System.out.println("No port was found or port was invalid, starting on default port");
+            log.info("No port was found or port was invalid, starting on default port");
             port = DEFAULT_PORT;
         }
 
@@ -44,7 +44,7 @@ public class Server {
     }
 
     private static void printHelp() {
-        System.out.println("Use flag -p for port, -h for help" +
+        log.info("Use flag -p for port, -h for help" +
                 "\n -p is an optional flag, you may not use it and start with default port + " + DEFAULT_PORT);
     }
 }

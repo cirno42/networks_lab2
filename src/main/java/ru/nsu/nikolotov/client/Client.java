@@ -26,25 +26,25 @@ public class Client {
         }
 
         if (filename == null) {
-            System.out.println("No file name was found");
+            log.info("No file name was found");
             printHelp();
             return;
         }
         if (address == null) {
-            System.out.println("No address was found, starting with default address");
+            log.info("No address was found, starting with default address");
             address = DEFAULT_ADDRESS;
         }
         if ((port == 0) || (port < 0) || (port > 65536)) {
-            System.out.println("No port was found or port was invalid, starting with default port");
+            log.info("No port was found or port was invalid, starting with default port");
             port = DEFAULT_PORT;
         }
 
         try (var clientSocket = new Socket(address, port)) {
             ResultOfSending response = FileSender.send(clientSocket, filename);
             switch (response) {
-                case ERROR -> System.out.println("Unknown error has occurred");
-                case NOT_FINISHED -> System.out.println("Downloading wasn't finished");
-                case SUCCESSFUL -> System.out.println("File downloaded successfully");
+                case ERROR -> log.info("Unknown error has occurred");
+                case NOT_FINISHED -> log.info("Downloading wasn't finished");
+                case SUCCESSFUL -> log.info("File downloaded successfully");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,7 +54,7 @@ public class Client {
 
 
     private static void printHelp() {
-        System.out.println("Use flags -f for file name, -p for port, -a for address. -h for help" +
+        log.info("Use flags -f for file name, -p for port, -a for address. -h for help" +
                 "\n -p and -a are optional flags, you may not use it and start with default port " + DEFAULT_PORT +
                 " and default address " + DEFAULT_ADDRESS);
     }
